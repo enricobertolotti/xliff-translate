@@ -7,7 +7,7 @@ Vue.use(Vuex);
 import { XLIFFObject, XLIFFStoreObject } from "@/models/xliffDefinitions";
 
 // Import Helpers
-import * as lsIO from "@/helpers/localstoreIO.ts";
+import * as lsIO from "@/helpers/xliff/localstoreIO";
 
 export default new Vuex.Store({
   state: {

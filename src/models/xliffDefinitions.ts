@@ -3,9 +3,11 @@ export interface XLIFFLanguages {
   target: string;
 }
 
-// interface XLIFFTransSection {
-
-// }
+export interface XLIFFTransUnit {
+  id: string;
+  source: string;
+  target: string;
+}
 
 export interface XMLNode {
   name?: string;
@@ -28,7 +30,7 @@ export interface XMLNode {
     id: string;
     "xmlns:sap": string;
   };
-
+  text?: string;
   elements: Array<XMLNode>;
 }
 

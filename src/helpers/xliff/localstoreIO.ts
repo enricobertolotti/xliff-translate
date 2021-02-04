@@ -1,4 +1,4 @@
-import * as endecode from "@/helpers/encodeDecode";
+import * as endecode from "@/helpers/xliff/encodeDecode";
 import { XLIFFObject } from "@/models/xliffDefinitions";
 
 function localstorageSetIDs(xliffIDArray: Array<string>) {

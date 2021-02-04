@@ -1,11 +1,43 @@
 <template>
   <v-sheet rounded="lg">
     <v-list color="transparent">
+      <div class="d-flex w100 mx-4">
+        <h2 class="mr-12">Files</h2>
+        <input
+          type="file"
+          id="fileupload"
+          ref="xmlFiles"
+          hidden
+          v-on:change="handleFileUpload()"
+        />
+        <label for="fileupload">
+            <v-icon class="button-round ml-5" color="blue lighten-2" >mdi-upload</v-icon>
+        </label>
+
+        <v-btn text icon color="red" @click="deleteAll()">
+          <v-icon>mdi-delete</v-icon>
+        </v-btn>
+      </div>
+
+      <v-divider class="my-2"></v-divider>
+
       <v-list-item v-for="filename in filenames" :key="filename" link>
         <v-list-item-content>
-          <v-list-item-title @click="setActiveFile(filename)">
-            <v-icon>mdi-file</v-icon>
-            {{ filename }}
+          <v-list-item-title class="d-flex">
+            <div class="d-flex"  @click="setActiveFile(filename)">
+              <v-icon>mdi-file</v-icon>
+              <p>{{ filename }}</p>
+            </div>
+            
+            <v-btn
+              class="ml-auto"
+              icon
+              color="red"
+              @click="deleteFile(filename)"
+            >
+              <v-icon>mdi-delete</v-icon>
+            </v-btn>
+            
           </v-list-item-title>
         </v-list-item-content>
       </v-list-item>
@@ -13,42 +45,25 @@
       <v-alert v-if="success" type="success">
         I'm a success alert.
       </v-alert>
-
-      <v-divider class="my-2"></v-divider>
-
-      <v-list-item link color="grey lighten-4">
-        <v-list-item-content>
-          <input
-            type="file"
-            id="fileupload"
-            ref="xmlFiles"
-            hidden
-            v-on:change="handleFileUpload()"
-          />
-          <label for="fileupload">
-            <v-icon small color="blue-grey">mdi-upload</v-icon> Upload File
-          </label>
-        </v-list-item-content>
-      </v-list-item>
     </v-list>
   </v-sheet>
 </template>
 
 <script>
-import { xmlToJSObj } from "@/helpers/xliffParse.ts";
-import { mapGetters, mapMutations } from "vuex";
+import { xmlToJSObj } from "@/helpers/xliff/xliffParse.ts";
+import { mapActions, mapGetters, mapMutations } from "vuex";
 
 export default {
   data() {
     return {
-      success: false
-    }
+      success: false,
+    };
   },
   computed: {
     filenames() {
       return this.getAllxliffIDs;
     },
-    ...mapGetters(["getAllxliffIDs"])
+    ...mapGetters(["getAllxliffIDs"]),
   },
   methods: {
     async handleFileUpload() {
@@ -75,9 +90,28 @@ export default {
     setActiveFile(filename) {
       this.setActiveFile(filename);
     },
-    ...mapMutations(["setActiveFile"])
+    deleteFile(filename) {
+      this.removeXliffOBJ(filename);
+    },
+    ...mapMutations(["setActiveFile"]),
+    ...mapActions(["removeXliffOBJ"])
   }
 };
 </script>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+
+
+
+.button-round {
+  height: 1.5em;
+  width: 1.5em;
+  border-radius: 50%;
+}
+
+.button-round:hover {
+  cursor: pointer;
+  background-color: rgba($color: #4FC3F7, $alpha: 0.1);
+}
+
+</style>
