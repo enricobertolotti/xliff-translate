@@ -74,10 +74,12 @@ export function getTransUnits(
         const nodeID = node.attributes?.id;
         const sourceText = node.elements[0].elements[0].text;
         const targetText = node.elements[1].elements[0].text;
+        const note = node.elements[2]?.elements[0]?.text;
         return {
           id: nodeID ? nodeID : "ID",
           source: sourceText ? sourceText : "Source Text Not Found",
-          target: targetText ? targetText : "Target text not found"
+          target: targetText ? targetText : "Target text not found",
+          note: note ? note : null
         };
       })
     : null;

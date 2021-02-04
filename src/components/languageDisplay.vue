@@ -1,41 +1,49 @@
 <template>
-  <div class="d-flex align-items-center ma-4">
-    <img
-      class="langIcon align-self-center"
-      v-if="sourceIcon"
-      :src="sourceIcon"
-    />
-    <p class="ma-0 align-self-center">{{ sourceLang }}</p>
-    <v-icon medium>mdi-chevron-right</v-icon>
-    <img
-      class="langIcon align-self-center"
-      v-if="targetIcon"
-      :src="targetIcon"
-    />
-    <p class="ma-0 align-self-center">{{ targetLang }}</p>
+  <div>
+    <div class="d-flex align-items-center ma-4">
+      <img
+        class="langIcon align-self-center"
+        v-if="sourceIcon"
+        :src="sourceIcon"
+      />
+      <p class="ma-0 align-self-center">{{ languages.source }}</p>
+      <v-icon medium>mdi-chevron-right</v-icon>
+      <img
+        class="langIcon align-self-center"
+        v-if="targetIcon"
+        :src="targetIcon"
+      />
+      <p class="ma-0 align-self-center">{{ languages.target }}</p>
+    </div>
   </div>
+  
 </template>
 
 <script>
 import { iconLookup } from "@/helpers/icons/iconMap.ts";
 export default {
   props: {
-    sourceLang: String,
-    targetLang: String,
+    languages: {
+      source: "",
+      target: ""
+    }
   },
   computed: {
     sourceIcon() {
-      const iconName = iconLookup(this.sourceLang);
-      console.log();
-      return iconName ? require(`@/assets/icons/countries/united-states-of-america.svg`) : null;
+      return this.languages ? this.getIcon(this.languages.source) : "";
     },
     targetIcon() {
-      const iconName = iconLookup(this.targetLang);
+      return this.languages ? this.getIcon(this.languages.target) : "";
+    }
+  },
+  methods: {
+    getIcon(languageCode) {
+      const iconName = iconLookup(languageCode);
       return iconName
         ? require(`@/assets/icons/countries/${iconName}.svg`)
-        : null;
-    },
-  },
+        : "";
+    }
+  }
 };
 </script>
 

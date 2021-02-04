@@ -4,22 +4,28 @@
       <div class="d-flex align-items-center pa-5">
         <div class="d-flex flex-column">
           <h1 class="ma-0">{{ filename }}</h1>
-          <p class="ma-0 xml-version font-italic" v-if="version">{{ version }}</p>
+          <p class="ma-0 xml-version font-italic" v-if="version">
+            {{ version }}
+          </p>
         </div>
-        <LanguageDisplay v-if="activeFile" class="ml-auto" sourceLang="EN" targetLang="DE" />
+        <LanguageDisplay
+          v-if="activeFile"
+          class="ml-auto"
+          :languages="languages"
+        />
       </div>
     </v-sheet>
 
-    <v-sheet class="mt-3" height="100%" width="100%" rounded="lg">
+    <v-sheet class="mt-3" width="100%" rounded="lg">
       <div class="pa-5">
         <div
-          class="d-flex flex-column w-100 h-100"
+          class="d-flex flex-column w-100"
           outlined
-          v-for="unit in transunits"
+          v-for="(unit, index) in transunits"
           :key="unit.id"
         >
           <div class="mb-2">
-            <h3>ID: {{ unit.id }}</h3>
+            <h5 class="grey--text">ID: {{ unit.id }}</h5>
           </div>
           <div class="d-flex w-100">
             <v-textarea
@@ -27,9 +33,10 @@
               :value="unit.source"
               label="Source"
               outlined
-              readonly
+              disabled
               auto-grow
-              rows="1"
+              dense
+              rows="0"
             ></v-textarea>
             <v-textarea
               class="ml-1"
@@ -37,9 +44,25 @@
               label="Target"
               outlined
               auto-grow
-              rows="1"
-              clearable
+              :tabindex="index + 30"
+              rows="0"
+              dense
             ></v-textarea>
+            <v-menu offset-y top left>
+              <template v-slot:activator="{ on, attrs }">
+                <v-btn
+                  color="amber"
+                  icon
+                  :disabled="!unit.note"
+                  :class="{ 'disabled-faded': !unit.note }"
+                  v-bind="attrs"
+                  v-on="on"
+                >
+                  <v-icon>mdi-message-bulleted</v-icon>
+                </v-btn>
+              </template>
+              <Comment :text="unit.note" />
+            </v-menu>
           </div>
         </div>
       </div>
@@ -51,10 +74,16 @@
 import { mapGetters } from "vuex";
 
 import LanguageDisplay from "@/components/languageDisplay.vue";
+import Comment from "@/components/comment.vue";
 
 import * as xparse from "@/helpers/xliff/xliffParse.ts";
 
 export default {
+  data() {
+    return {
+      showNote: false
+    };
+  },
   computed: {
     activeFile() {
       return this.getActiveFile;
@@ -79,24 +108,31 @@ export default {
         return [];
       }
     },
+    languages() {
+      if (this.activeFile) {
+        const langs = xparse.getXliffLanguages(this.activeFile.object);
+        if (langs) {
+          return langs;
+        }
+      }
+      return { source: "", target: "" };
+    },
     ...mapGetters(["getActiveFile"])
   },
-  methods: {
-    getLanguageIcon() {
-      return require();
-    }
-  },
   components: {
-    LanguageDisplay
+    LanguageDisplay,
+    Comment
   }
 };
 </script>
 
 <style lang="scss" scoped>
-
 .xml-version {
   font-size: 0.9em;
   opacity: 0.3;
 }
 
+.disabled-faded {
+  opacity: 0.5;
+}
 </style>
