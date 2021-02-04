@@ -1,4 +1,8 @@
-import { XLIFFLanguages, XLIFFObject } from "@/models/xliffDefinitions";
+import {
+  XLIFFLanguages,
+  XLIFFObject,
+  XMLNode
+} from "@/models/xliffDefinitions";
 import * as convert from "xml-js";
 
 export function xmlToJSObj(xmlString: string) {
@@ -16,16 +20,25 @@ export function getXMLVersion(jsObj: XLIFFObject): string | null {
   return version ? version : null;
 }
 
-function getXliffTag(xmlObj: XLIFFObject) {
-  for (let i = 0; i < xmlObj.elements.length; i++) {
-    if (xmlObj["elements"][i].name == "html") {
-      return xmlObj["elements"][i]["elements"][0]["elements"][0]["elements"][0];
+function getXliffTag(xmlObj: XLIFFObject): XMLNode | null {
+  function recursiveResolve(xmlNode: XMLNode): XMLNode | null {
+    if (xmlNode.elements) {
+      for (let i = 0; i < xmlNode.elements.length; i++) {
+        const node = xmlNode["elements"][i];
+        if (node.name == "xliff") {
+          return node;
+        }
+        return recursiveResolve(node);
+      }
     }
+    return null;
   }
+  const nodes = xmlObj.elements.map(node => recursiveResolve(node));
+  return nodes.filter(node => node != null)?.[0];
 }
 
 export function getXliffLanguages(xmlObj: XLIFFObject): XLIFFLanguages | null {
-  const xliffTagAttr = getXliffTag(xmlObj)?.attributes;
+  const xliffTagAttr = getXliffTag(xmlObj)?.elements[0].attributes;
   let sourceLang = null;
   let targetLang = null;
 
@@ -37,4 +50,10 @@ export function getXliffLanguages(xmlObj: XLIFFObject): XLIFFLanguages | null {
   return sourceLang && targetLang
     ? { source: sourceLang, target: targetLang }
     : null;
+}
+
+export function getTransNodes(xmlObj: XLIFFObject): Array<XMLNode> | null {
+  const xliffNode = getXliffTag(xmlObj);
+  const transNodes = xliffNode?.elements.filter(node => node.name != "header");
+  return transNodes ? transNodes : null;
 }

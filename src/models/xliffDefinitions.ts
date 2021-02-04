@@ -3,7 +3,11 @@ export interface XLIFFLanguages {
   target: string;
 }
 
-interface XMLNode {
+// interface XLIFFTransSection {
+
+// }
+
+export interface XMLNode {
   name?: string;
   type: string;
 

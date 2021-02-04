@@ -10,6 +10,10 @@
         </v-list-item-content>
       </v-list-item>
 
+      <v-alert v-if="success" type="success">
+        I'm a success alert.
+      </v-alert>
+
       <v-divider class="my-2"></v-divider>
 
       <v-list-item link color="grey lighten-4">
@@ -35,6 +39,11 @@ import { xmlToJSObj } from "@/helpers/xliffParse.ts";
 import { mapGetters, mapMutations } from "vuex";
 
 export default {
+  data() {
+    return {
+      success: false
+    }
+  },
   computed: {
     filenames() {
       return this.getAllxliffIDs;
@@ -56,6 +65,12 @@ export default {
         filename: filename,
         object: xmlObj
       });
+
+      this.success = true;
+      setTimeout(this.resetAlert(), 2000);
+    },
+    resetAlert() {
+      this.success = false;
     },
     setActiveFile(filename) {
       this.setActiveFile(filename);
