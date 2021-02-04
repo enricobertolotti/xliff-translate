@@ -11,7 +11,8 @@ import * as lsIO from "@/helpers/localstoreIO.ts";
 
 export default new Vuex.Store({
   state: {
-    xliffOBJs: Array<XLIFFStoreObject>()
+    xliffOBJs: Array<XLIFFStoreObject>(),
+    activeFile: ""
   },
 
   getters: {
@@ -23,6 +24,12 @@ export default new Vuex.Store({
     },
     getAllxliffs(state): Array<XLIFFStoreObject> {
       return state.xliffOBJs;
+    },
+    getActiveFile(state): XLIFFStoreObject | null {
+      const activeFile = state.xliffOBJs.filter(
+        obj => obj.filename == state.activeFile
+      )?.[0];
+      return activeFile ? activeFile : null;
     }
   },
 
@@ -46,19 +53,39 @@ export default new Vuex.Store({
 
       state.xliffOBJs = xliffStoreObjs;
     },
-    addXliffOBJ(state, { filename, obj }) {
-      state.xliffOBJs.push({ filename: filename, object: obj });
+    addXliffOBJ(state, { filename, object }) {
+      state.xliffOBJs.push({ filename: filename, object: object });
     },
     removeXliffOBJ(state, filename) {
       state.xliffOBJs = state.xliffOBJs.filter(obj => obj.filename != filename);
     },
-    updatelocalStore(state, getters) {
-      lsIO.localstorageSetIDs(getters.getAllxliffIDs());
+    updatelocalStore(state) {
+      lsIO.localstorageSetIDs(state.xliffOBJs.map(obj => obj.filename));
+    },
+    setActiveFile(state, filename: string): void {
+      state.activeFile = filename;
+    },
+    clearActiveFile(state): void {
+      state.activeFile = "";
     }
   },
   actions: {
-    addToDo(context, xliffObj: XLIFFObject) {
-      context.commit("addToDo", xliffObj);
+    addXliffOBJ(context, { filename, object }) {
+      // Add it to store
+      context.commit("addXliffOBJ", { filename: filename, object: object });
+      // Add it to localstorage
+      lsIO.localstorageAddOBJ(filename, object);
+      // Update localstorage
+      context.commit("updatelocalStore");
+    },
+    removeXliffOBJ(context, filename) {
+      // Remove it from store
+      context.commit("removeXliffOBJ", filename);
+      // Remove it from localstorage
+      lsIO.localstorageRemoveOBJ(filename);
+      // Update localstorage
+      context.commit("updatelocalStore");
+      // console.log("[Store] removed", filename);
     }
   }
 });
