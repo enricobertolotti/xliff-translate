@@ -11,7 +11,9 @@
           v-on:change="handleFileUpload()"
         />
         <label for="fileupload">
-            <v-icon class="button-round ml-5" color="blue lighten-2" >mdi-upload</v-icon>
+          <v-icon class="button-round ml-5" color="blue lighten-2"
+            >mdi-upload</v-icon
+          >
         </label>
 
         <v-btn text icon color="red" @click="deleteAll()">
@@ -24,11 +26,11 @@
       <v-list-item v-for="filename in filenames" :key="filename" link>
         <v-list-item-content>
           <v-list-item-title class="d-flex">
-            <div class="d-flex"  @click="setActiveFile(filename)">
-              <v-icon>mdi-file</v-icon>
-              <p>{{ filename }}</p>
+            <div class="d-flex" @click="setActiveFile(filename)">
+              <v-icon class="ma-0">mdi-file</v-icon>
+              <p class="my-auto">{{ filename }}</p>
             </div>
-            
+
             <v-btn
               class="ml-auto"
               icon
@@ -37,7 +39,6 @@
             >
               <v-icon>mdi-delete</v-icon>
             </v-btn>
-            
           </v-list-item-title>
         </v-list-item-content>
       </v-list-item>
@@ -56,14 +57,14 @@ import { mapActions, mapGetters, mapMutations } from "vuex";
 export default {
   data() {
     return {
-      success: false,
+      success: false
     };
   },
   computed: {
     filenames() {
       return this.getAllxliffIDs;
     },
-    ...mapGetters(["getAllxliffIDs"]),
+    ...mapGetters(["getAllxliffIDs"])
   },
   methods: {
     async handleFileUpload() {
@@ -100,9 +101,6 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-
-
-
 .button-round {
   height: 1.5em;
   width: 1.5em;
@@ -111,7 +109,6 @@ export default {
 
 .button-round:hover {
   cursor: pointer;
-  background-color: rgba($color: #4FC3F7, $alpha: 0.1);
+  background-color: rgba($color: #4fc3f7, $alpha: 0.1);
 }
-
 </style>

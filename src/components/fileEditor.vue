@@ -2,9 +2,11 @@
   <div class="d-flex flex-column flex-grow-1">
     <v-sheet height="100%" width="100%" rounded="lg">
       <div class="d-flex align-items-center pa-5">
-        <h1>{{ filename }}</h1>
-        <LanguageDisplay sourceLang="EN" targetLang="DE" />
-        <p v-if="version">{{ version }}</p>
+        <div class="d-flex flex-column">
+          <h1 class="ma-0">{{ filename }}</h1>
+          <p class="ma-0 xml-version font-italic" v-if="version">{{ version }}</p>
+        </div>
+        <LanguageDisplay v-if="activeFile" class="ml-auto" sourceLang="EN" targetLang="DE" />
       </div>
     </v-sheet>
 
@@ -90,4 +92,11 @@ export default {
 };
 </script>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+
+.xml-version {
+  font-size: 0.9em;
+  opacity: 0.3;
+}
+
+</style>
