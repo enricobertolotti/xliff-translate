@@ -1,6 +1,5 @@
 <template>
-  <v-sheet rounded="lg">
-    <v-list color="transparent">
+    <v-list color="transparent" class="py-8 px-4">
       <div class="d-flex w100 mx-4">
         <h2 class="mr-12">Files</h2>
         <input
@@ -50,7 +49,6 @@
         </v-list-item-content>
       </v-list-item>
     </v-list>
-  </v-sheet>
 </template>
 
 <script>

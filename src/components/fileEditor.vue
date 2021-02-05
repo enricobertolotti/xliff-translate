@@ -1,6 +1,5 @@
 <template>
   <div class="d-flex flex-column flex-grow-1">
-    <v-sheet height="100%" width="100%" rounded="lg">
       <div class="d-flex align-items-center pa-5">
         <div class="d-flex flex-column">
           <h1 class="ma-0">{{ filename }}</h1>
@@ -14,9 +13,7 @@
           :languages="languages"
         />
       </div>
-    </v-sheet>
 
-    <v-sheet class="mt-3" width="100%" rounded="lg">
       <div class="pa-5">
         <div
           class="d-flex flex-column w-100"
@@ -67,7 +64,6 @@
           </div>
         </div>
       </div>
-    </v-sheet>
   </div>
 </template>
 
