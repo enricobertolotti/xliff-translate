@@ -40,7 +40,8 @@
             ></v-textarea>
             <v-textarea
               class="ml-1"
-              :value="unit.target"
+              v-model="unit.target"
+              @change="saveChange(unit.id, unit.target)"
               label="Target"
               outlined
               auto-grow
@@ -71,7 +72,7 @@
 </template>
 
 <script>
-import { mapGetters } from "vuex";
+import { mapActions, mapGetters, mapMutations } from "vuex";
 
 import LanguageDisplay from "@/components/languageDisplay.vue";
 import Comment from "@/components/comment.vue";
@@ -118,6 +119,16 @@ export default {
       return { source: "", target: "" };
     },
     ...mapGetters(["getActiveFile"])
+  },
+  methods: {
+    saveChange(unitID, unitText) {
+      this.updateField({
+        filename: this.activeFile.filename,
+        unitID: unitID,
+        unitText: unitText
+      });
+    },
+    ...mapActions(["updateField"])
   },
   components: {
     LanguageDisplay,

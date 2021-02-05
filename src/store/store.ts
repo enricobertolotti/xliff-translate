@@ -8,7 +8,9 @@ import { XLIFFObject, XLIFFStoreObject } from "@/models/xliffDefinitions";
 
 // Import Helpers
 import * as lsIO from "@/helpers/xliff/localstoreIO";
+import { setTransUnitField } from "@/helpers/xliff/xliffParse";
 
+// TODO: store path to xliff tag.
 export default new Vuex.Store({
   state: {
     xliffOBJs: Array<XLIFFStoreObject>(),
@@ -73,6 +75,17 @@ export default new Vuex.Store({
     },
     clearActiveFile(state): void {
       state.activeFile = "";
+    },
+    updateField(state, { filename, unitID, unitText }) {
+      console.log("updateing field");
+      const objIndex = state.xliffOBJs.findIndex(
+        obj => obj.filename == filename
+      );
+      state.xliffOBJs[objIndex].object = setTransUnitField(
+        state.xliffOBJs[objIndex].object,
+        unitID,
+        unitText
+      );
     }
   },
   actions: {
@@ -92,6 +105,11 @@ export default new Vuex.Store({
       // Update localstorage
       context.commit("updatelocalStore");
       // console.log("[Store] removed", filename);
+    },
+    updateField({ commit, getters }, { filename, unitID, unitText }) {
+      commit("updateField", { filename, unitID, unitText });
+      const updatedOBJ = getters.getXliffStoreObj(filename).object;
+      lsIO.localstorageOverwriteOBJ(filename, updatedOBJ);
     },
     deleteAllXliffOBJs(context) {
       const allIDs: Array<string> = context.getters.getAllxliffIDs;

@@ -54,7 +54,6 @@
 </template>
 
 <script>
-import { xmlToJSObj } from "@/helpers/xliff/xliffParse.ts";
 import { mapActions, mapGetters, mapMutations } from "vuex";
 import * as fio from "@/helpers/xliff/fileIO";
 

@@ -27,6 +27,10 @@ function localstorageAddOBJ(filename: string, obj: XLIFFObject): void {
   window.localStorage.setItem(filename, JSON.stringify(obj));
 }
 
+function localstorageOverwriteOBJ(filename: string, obj: XLIFFObject): void {
+  localstorageAddOBJ(filename, obj)
+}
+
 function localstorageRemoveOBJ(filename: string): void {
   window.localStorage.removeItem(filename);
 }
@@ -36,5 +40,6 @@ export {
   localstorageGetIDs,
   localstorageLoadOBJ,
   localstorageAddOBJ,
+  localstorageOverwriteOBJ,
   localstorageRemoveOBJ
 };
