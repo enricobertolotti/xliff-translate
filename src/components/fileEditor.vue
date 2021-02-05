@@ -72,7 +72,7 @@
 </template>
 
 <script>
-import { mapActions, mapGetters, mapMutations } from "vuex";
+import { mapActions, mapGetters } from "vuex";
 
 import LanguageDisplay from "@/components/languageDisplay.vue";
 import Comment from "@/components/comment.vue";

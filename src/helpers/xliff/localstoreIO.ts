@@ -28,7 +28,7 @@ function localstorageAddOBJ(filename: string, obj: XLIFFObject): void {
 }
 
 function localstorageOverwriteOBJ(filename: string, obj: XLIFFObject): void {
-  localstorageAddOBJ(filename, obj)
+  localstorageAddOBJ(filename, obj);
 }
 
 function localstorageRemoveOBJ(filename: string): void {

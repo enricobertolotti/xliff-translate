@@ -30,14 +30,14 @@ export default {
           iconName: "vue",
           text: "Amazing progressive framework for building user interfaces.",
           websiteLink: "https://vuejs.org/",
-          githubLink: "https://github.com/vuejs/vue",
+          githubLink: "https://github.com/vuejs/vue"
         },
         {
           name: "Vuetify",
           iconName: "vuetify",
           text: "Vue UI Library with beautifully handcrafted Components",
           websiteLink: "https://vuetifyjs.com/en/",
-          githubLink: "https://github.com/vuetifyjs/vuetify",
+          githubLink: "https://github.com/vuetifyjs/vuetify"
         },
         {
           name: "Vuex",
@@ -45,9 +45,9 @@ export default {
           text:
             "Powerful state management pattern + library for Vue applications",
           websiteLink: "https://vuex.vuejs.org/",
-          githubLink: "https://github.com/vuejs/vuex",
+          githubLink: "https://github.com/vuejs/vuex"
         }
-      ],
+      ]
     };
   },
   components: {
@@ -69,5 +69,4 @@ export default {
 .x:hover {
   opacity: 1;
 }
-
 </style>

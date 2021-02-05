@@ -34,7 +34,9 @@
     </v-main>
 
     <v-footer color="grey lighten-3" :class="{ dim: showOverlay }">
-      <p @click=(openPersonalWebsite()) class="ma-auto text-caption">© 2021 Enrico Bertolotti</p>
+      <p @click="openPersonalWebsite()" class="ma-auto text-caption">
+        © 2021 Enrico Bertolotti
+      </p>
     </v-footer>
   </v-app>
 </template>
@@ -57,7 +59,10 @@ export default {
   },
   methods: {
     openPersonalWebsite() {
-      window.open("http://portfolio-personal-website.s3-website.eu-central-1.amazonaws.com/", "_blank")
+      window.open(
+        "http://portfolio-personal-website.s3-website.eu-central-1.amazonaws.com/",
+        "_blank"
+      );
     }
   },
   mounted() {
@@ -67,7 +72,6 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-
 .text-caption {
   opacity: 0.3;
 }

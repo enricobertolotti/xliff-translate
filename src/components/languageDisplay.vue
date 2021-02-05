@@ -16,7 +16,6 @@
       <p class="ma-0 align-self-center">{{ languages.target }}</p>
     </div>
   </div>
-  
 </template>
 
 <script>
