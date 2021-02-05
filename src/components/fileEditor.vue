@@ -1,22 +1,22 @@
 <template>
-  <div class="d-flex flex-column flex-grow-1">
-      <div class="d-flex align-items-center pa-5">
+  <div class="d-flex flex-column flex-grow-1 ma-3">
+      <div class="d-flex align-items-center card top">
         <div class="d-flex flex-column">
-          <h1 class="ma-0">{{ filename }}</h1>
+          <h2 class="ma-0">{{ filename }}</h2>
           <p class="ma-0 xml-version font-italic" v-if="version">
             {{ version }}
           </p>
         </div>
         <LanguageDisplay
           v-if="activeFile"
-          class="ml-auto"
+          class="ml-auto my-auto"
           :languages="languages"
         />
       </div>
 
-      <div class="pa-5">
+      <div class="trans-units">
         <div
-          class="d-flex flex-column w-100"
+          class="d-flex flex-column w-100 card"
           outlined
           v-for="(unit, index) in transunits"
           :key="unit.id"
@@ -91,7 +91,7 @@ export default {
     version() {
       if (this.activeFile) {
         const version = xparse.getXMLVersion(this.activeFile.object);
-        return version ? "XML Version: " + version : "Cannot Read Version";
+        return version ? "XML: " + version : "Cannot Read Version";
       } else {
         return null;
       }
@@ -133,13 +133,40 @@ export default {
 };
 </script>
 
+
+
 <style lang="scss" scoped>
+
+h2 {
+  font-family: 'Montserrat', sans-serif;
+  color: #255372;
+}
+
 .xml-version {
   font-size: 0.9em;
   opacity: 0.3;
 }
 
+.card {
+  border-radius: 0.7em;
+  padding: 0.9em 1.4em;
+}
+
+.top {
+  background-color: white;
+}
+
+.trans-unit {
+  margin: 0.9em 1.4em;
+
+}
+
 .disabled-faded {
   opacity: 0.5;
+}
+
+.trans-units {
+  overflow-y: scroll;
+  overflow-x: none;
 }
 </style>

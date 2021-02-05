@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div class="d-flex align-items-center ma-4">
+    <div class="d-flex align-items-center">
       <img
         class="langIcon align-self-center"
         v-if="sourceIcon"

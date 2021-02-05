@@ -1,7 +1,7 @@
 <template>
     <v-list color="transparent" class="py-8 px-4">
       <div class="d-flex w100 mx-4">
-        <h2 class="mr-12">Files</h2>
+        <h2 class="mr-auto">Files</h2>
         <input
           type="file"
           id="fileupload"
@@ -11,16 +11,16 @@
           v-on:change="handleFileUpload()"
         />
         <label for="fileupload">
-          <v-icon class="button-round ml-5" color="blue lighten-2"
-            >mdi-upload</v-icon
-          >
+          <div class="d-flex button-round">
+            <img src="@/assets/icons/ui/upload_outline.svg" class="icon ma-auto">
+          </div>
         </label>
 
         <v-btn text icon color="green" @click="downloadAllFiles()">
           <v-icon>mdi-download</v-icon>
         </v-btn>
         <v-btn text icon color="red" @click="deleteAllFiles()">
-          <v-icon>mdi-delete</v-icon>
+          <img src="@/assets/icons/ui/trash_outline.svg" class="icon">
         </v-btn>
       </div>
 
@@ -31,7 +31,7 @@
           <v-list-item-title class="d-flex">
             <div class="d-flex" @click="setActiveFile(filename)">
               <v-icon class="ma-0">mdi-file</v-icon>
-              <p class="my-auto">{{ filename }}</p>
+              <p class="my-auto mr-3">{{ filename }}</p>
             </div>
 
             <v-btn
@@ -43,7 +43,7 @@
               <v-icon>mdi-download</v-icon>
             </v-btn>
             <v-btn icon color="red" @click="deleteFile(filename)">
-              <v-icon>mdi-delete</v-icon>
+              <img src="@/assets/icons/ui/trash_outline.svg" class="icon">
             </v-btn>
           </v-list-item-title>
         </v-list-item-content>
@@ -98,9 +98,20 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+h2 {
+  font-family: 'Montserrat', sans-serif;
+  color: #255372;
+}
+
+.icon {
+  height: 1.2em;
+  width: 1.2em;
+  object-fit: contain;
+}
+
 .button-round {
-  height: 1.5em;
-  width: 1.5em;
+  height: 2.1em;
+  width: 2.1em;
   border-radius: 50%;
 }
 

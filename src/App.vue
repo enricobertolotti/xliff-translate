@@ -55,12 +55,17 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400&display=swap');
+
 :root {
   --darker-blue: #091b23;
   --dark-blue: #255372;
   --blue: #369ce5;
   --light-blue: #3fa3e9;
   --lighter-blue: #eff7fd;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 .main-view {
@@ -77,6 +82,8 @@ export default {
   box-shadow: 1em 0em 2em rgba($color: #000000, $alpha: 0.2);
   background: linear-gradient(#369ce5, #3fa3e9);
 }
+
+
 
 .menu-bar {
   height: 100%;
@@ -107,10 +114,14 @@ export default {
 
 .fileeditor {
   border-radius: 0 1.8em 1.8em 0;
-  background-color: #eff7fd;
+  background-color: #F3F6F9;
 }
 
 .dim {
   opacity: 0.05 !important;
+}
+
+::-webkit-scrollbar {
+  display: none;
 }
 </style>
