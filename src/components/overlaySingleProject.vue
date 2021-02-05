@@ -14,7 +14,7 @@
     <img
       class="project-image ml-2 link align-self-center"
       @click="openLink('website')"
-      src="@/assets/icons/logos/github.svg"
+      src="@/assets/icons/logos/website.svg"
       alt="Website"
     />
   </v-card>

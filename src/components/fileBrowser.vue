@@ -7,6 +7,7 @@
           type="file"
           id="fileupload"
           ref="xmlFiles"
+          multiple
           hidden
           v-on:change="handleFileUpload()"
         />
@@ -16,7 +17,10 @@
           >
         </label>
 
-        <v-btn text icon color="red" @click="deleteAll()">
+        <v-btn text icon color="green" @click="downloadAllFiles()">
+          <v-icon>mdi-download</v-icon>
+        </v-btn>
+        <v-btn text icon color="red" @click="deleteAllFiles()">
           <v-icon>mdi-delete</v-icon>
         </v-btn>
       </div>
@@ -34,18 +38,17 @@
             <v-btn
               class="ml-auto"
               icon
-              color="red"
-              @click="deleteFile(filename)"
+              color="green"
+              @click="downloadFile(filename)"
             >
+              <v-icon>mdi-download</v-icon>
+            </v-btn>
+            <v-btn icon color="red" @click="deleteFile(filename)">
               <v-icon>mdi-delete</v-icon>
             </v-btn>
           </v-list-item-title>
         </v-list-item-content>
       </v-list-item>
-
-      <v-alert v-if="success" type="success">
-        I'm a success alert.
-      </v-alert>
     </v-list>
   </v-sheet>
 </template>
@@ -53,6 +56,7 @@
 <script>
 import { xmlToJSObj } from "@/helpers/xliff/xliffParse.ts";
 import { mapActions, mapGetters, mapMutations } from "vuex";
+import * as fio from "@/helpers/xliff/fileIO";
 
 export default {
   data() {
@@ -68,25 +72,12 @@ export default {
   },
   methods: {
     async handleFileUpload() {
-      // Get file and read text
-      const filename = this.$refs.xmlFiles.files[0].name;
-      const xliffString = await this.$refs.xmlFiles.files[0].text();
-
-      // Convert string to XLIFF Object
-      const xmlObj = xmlToJSObj(xliffString);
-      console.log(xmlObj);
-
-      // Upload it to the store
-      this.$store.dispatch("addXliffOBJ", {
-        filename: filename,
-        object: xmlObj
-      });
-
-      this.success = true;
-      setTimeout(this.resetAlert(), 2000);
-    },
-    resetAlert() {
-      this.success = false;
+      // For each file handle the upload
+      Promise.resolve(
+        this.$refs.xmlFiles.files.forEach(file => {
+          fio.uploadFiles(file);
+        })
+      );
     },
     setActiveFile(filename) {
       this.setActiveFile(filename);
@@ -94,8 +85,17 @@ export default {
     deleteFile(filename) {
       this.removeXliffOBJ(filename);
     },
+    deleteAllFiles() {
+      this.deleteAllXliffOBJs();
+    },
+    downloadFile(filename) {
+      fio.downloadFile(filename);
+    },
+    downloadAllFiles() {
+      fio.downloadAllFiles();
+    },
     ...mapMutations(["setActiveFile"]),
-    ...mapActions(["removeXliffOBJ"])
+    ...mapActions(["removeXliffOBJ", "deleteAllXliffOBJs"])
   }
 };
 </script>

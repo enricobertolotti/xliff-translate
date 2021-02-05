@@ -30,6 +30,12 @@ export default new Vuex.Store({
         obj => obj.filename == state.activeFile
       )?.[0];
       return activeFile ? activeFile : null;
+    },
+    getXliffStoreObj: state => (filename: string): XLIFFStoreObject | null => {
+      console.log("Store: ", filename);
+      const obj = state.xliffOBJs.find(obj => obj.filename == filename);
+      console.log("Store: ", obj);
+      return obj ? obj : null;
     }
   },
 
@@ -86,6 +92,12 @@ export default new Vuex.Store({
       // Update localstorage
       context.commit("updatelocalStore");
       // console.log("[Store] removed", filename);
+    },
+    deleteAllXliffOBJs(context) {
+      const allIDs: Array<string> = context.getters.getAllxliffIDs;
+      allIDs.forEach(filename => {
+        context.dispatch("removeXliffOBJ", filename);
+      });
     }
   }
 });
