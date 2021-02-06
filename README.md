@@ -1,4 +1,4 @@
-# ![ ](/assets/icons/ui/logo.svg "XliffLogo") Xliff Translation Web Interface
+# ![ ](/assets/icons/logos/icon_colorful.png "XliffLogo") Xliff Translation Web Interface
 This is the repository for the web app currently hosted at 🌍 http://xliff-translate.s3-website-eu-west-1.amazonaws.com/. 
 
 For new feature requests please shoot me an email at 📨hello@enricobertolotti.com! I'll try to get around to implementing them as soon as I can.
@@ -15,7 +15,7 @@ Sometimes (usually I think) translators are not programmers or engineers, and wh
 Here is a list of all of the current and planned features. For a more detailed overview of future features check out the [trello board](https://trello.com/b/HHcgwnXx/xliff-translate-web-app).
 
 #### ✅ Current: 
-* Batch upload and parse any XML file with an XLIFF tag in it. *⚠️ Warning: Some special characters are not supported yet and could display partially, incorrectly or not at all! Do not use for production yet!*
+* Batch upload and parse any XML file with an XLIFF tag in it. *⚠️ Warning: Some special characters are not supported yet and could display partially, incorrectly or not at all! Do not use for anything serious yet!*
 * Stores the documents and translation progress in your browsers local storage so you dont lose them when you close the tab / browser / restart your computer. <sup>1</sup>
 * All edits to the text blocks are automatically saved while you work.
 * Download single xml file as well as download all current files as a .zip file.
@@ -30,7 +30,7 @@ Here is a list of all of the current and planned features. For a more detailed o
 
 ## Contributing
 
-You want to contribute to the project? Awesome! 🍾 Fork the repository and follow the steps below to get started. You can join the [discord server](https://discord.gg/hGjMAqaYQC) to chat about your ideas! Hope to see you there. 
+You want to contribute to the project? Awesome! 🍾 Fork the repository and follow the steps below to get started. You can also join the [discord server](https://discord.gg/hGjMAqaYQC) to chat about your ideas! Hope to see you there. 
 
 ### Install all project dependencies
 ```
