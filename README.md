@@ -1,4 +1,4 @@
-# ![ ](/assets/icons/logos/icon_colorful.png "XliffLogo") Xliff Translation Web Interface
+# <img src="https://raw.githubusercontent.com/enricobertolotti/xliff-translate/master/src/assets/icons/logos/icon_colorful.png" height=20/> Xliff Translation Web Interface
 This is the repository for the web app currently hosted at 🌍 http://xliff-translate.s3-website-eu-west-1.amazonaws.com/. 
 
 For new feature requests please shoot me an email at 📨hello@enricobertolotti.com! I'll try to get around to implementing them as soon as I can.
