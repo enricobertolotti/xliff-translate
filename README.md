@@ -1,19 +1,23 @@
 # ![ ](/assets/icons/ui/logo.svg "XliffLogo") Xliff Translation Web Interface
-This is the repository for the web app currently hosted at http://xliff-translate.s3-website-eu-west-1.amazonaws.com/. 
+This is the repository for the web app currently hosted at 🌍 http://xliff-translate.s3-website-eu-west-1.amazonaws.com/. 
 
-For new feature requests please send me an email at hello@enricobertolotti.com! I'll try to get around to implementing them as soon as I can.
+For new feature requests please shoot me an email at 📨hello@enricobertolotti.com! I'll try to get around to implementing them as soon as I can.
 
 
 
 ## Description
+
+
+### 🗃️ Background
+Sometimes (usually I think) translators are not programmers or engineers, and when faced with an XLIFF file they need to translate they are overwhelmed with all the XML tags and are scared to break something. Alternatives are either expensive, lack-features, or are confusing to use. This web-app aims to solve those problems.
 
 ### 📜 Features
 Here is a list of all of the current and planned features. For a more detailed overview of future features check out the [trello board](https://trello.com/b/HHcgwnXx/xliff-translate-web-app).
 
 #### ✅ Current: 
 * Batch upload and parse any XML file with an XLIFF tag in it. *⚠️ Warning: Some special characters are not supported yet and could display partially, incorrectly or not at all! Do not use for production yet!*
-* Store the documents and translation progress in your browsers local storage so you dont lose them when you close the tab / browser / restart your computer. <sup>1</sup>
-* All edits to the target text blocks are automatically saved while you work.
+* Stores the documents and translation progress in your browsers local storage so you dont lose them when you close the tab / browser / restart your computer. <sup>1</sup>
+* All edits to the text blocks are automatically saved while you work.
 * Download single xml file as well as download all current files as a .zip file.
 * Show notes for each section if there are any.
 * Display XML Version as well as source and target language of the XLIFF file.
@@ -23,9 +27,6 @@ Here is a list of all of the current and planned features. For a more detailed o
 * Add sections around linebreak and other special characters to make it impossible to break the XML. 
 * Add translation suggestion on hover.
 
-
-### Background
-Sometimes translators are not programmers or engineeres, and when faced with an XLIFF file they need to translate they are overwhelmed with all the XML tags and are scared to break something. Alternatives are either expensive, lack-features, or are confusing to use. This web-app aims to solve those problems.
 
 ## Contributing
 
