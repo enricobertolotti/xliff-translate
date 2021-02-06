@@ -1,4 +1,4 @@
-# <img src="https://raw.githubusercontent.com/enricobertolotti/xliff-translate/master/src/assets/icons/logos/icon_colorful.png" height=20/> Xliff Translation Web Interface
+# <img src="https://raw.githubusercontent.com/enricobertolotti/xliff-translate/master/src/assets/icons/logos/icon_colorful.png" height=25/> Xliff Translation Web Interface
 This is the repository for the web app currently hosted at 🌍 http://xliff-translate.s3-website-eu-west-1.amazonaws.com/. 
 
 For new feature requests please shoot me an email at 📨hello@enricobertolotti.com! I'll try to get around to implementing them as soon as I can.
@@ -12,7 +12,7 @@ For new feature requests please shoot me an email at 📨hello@enricobertolotti.
 Sometimes (usually I think) translators are not programmers or engineers, and when faced with an XLIFF file they need to translate they are overwhelmed with all the XML tags and are scared to break something. Alternatives are either expensive, lack-features, or are confusing to use. This web-app aims to solve those problems.
 
 ### 📜 Features
-Here is a list of all of the current and planned features. For a more detailed overview of future features check out the [trello board](https://trello.com/b/HHcgwnXx/xliff-translate-web-app).
+Here is a list of all current and planned features. For a more detailed overview of future features check out the [trello board](https://trello.com/b/HHcgwnXx/xliff-translate-web-app).
 
 #### ✅ Current: 
 * Batch upload and parse any XML file with an XLIFF tag in it. *⚠️ Warning: Some special characters are not supported yet and could display partially, incorrectly or not at all! Do not use for anything serious yet!*
@@ -22,7 +22,9 @@ Here is a list of all of the current and planned features. For a more detailed o
 * Show notes for each section if there are any.
 * Display XML Version as well as source and target language of the XLIFF file.
 
-#### 🚧 Planned: 
+#### 🚧 Planned:
+* Add information pop-up to illustrate workflow. 
+* Add possibility to add account and backup documents to firebase for syncing across devices.
 * Automatically name zip file based on its contents.
 * Add sections around linebreak and other special characters to make it impossible to break the XML. 
 * Add translation suggestion on hover.
