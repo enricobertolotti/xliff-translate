@@ -1,5 +1,5 @@
 <template>
-  <div class="d-flex justify-content-between pb-3">
+  <div class="d-flex justify-content-between align-items-center mb-3">
     <div class="d-flex flex-column">
       <h2 class="m-0">{{ filename }}</h2>
       <p class="m-0 xml-version font-italic" v-if="version">
@@ -7,7 +7,7 @@
       </p>
     </div>
     <div class="d-flex">
-      <LanguageDisplay class="ml-auto my-auto" :languages="languages" />
+      <LanguageDisplay class="mr-2" :languages="languages" />
     </div>
   </div>
 </template>
@@ -30,4 +30,9 @@ export default {
 };
 </script>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+.xml-version {
+  font-size: 0.7em;
+  opacity: 0.3;
+}
+</style>
