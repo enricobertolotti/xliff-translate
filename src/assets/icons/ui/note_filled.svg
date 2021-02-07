@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   data-name="Layer 1"
+   viewBox="0 0 76.330002 77.199997"
+   x="0px"
+   y="0px"
+   version="1.1"
+   id="svg12"
+   sodipodi:docname="note_filled.svg"
+   width="76.330002"
+   height="77.199997"
+   inkscape:version="0.92.5 (2060ec1f9f, 2020-04-08)">
+  <metadata
+     id="metadata18">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <defs
+     id="defs16" />
+  <sodipodi:namedview
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1"
+     objecttolerance="10"
+     gridtolerance="10"
+     guidetolerance="10"
+     inkscape:pageopacity="0"
+     inkscape:pageshadow="2"
+     inkscape:window-width="2503"
+     inkscape:window-height="1016"
+     id="namedview14"
+     showgrid="false"
+     inkscape:zoom="1.888"
+     inkscape:cx="-57.098983"
+     inkscape:cy="26.7"
+     inkscape:window-x="56"
+     inkscape:window-y="27"
+     inkscape:window-maximized="0"
+     inkscape:current-layer="svg12" />
+  <title
+     id="title2">Artboard 72</title>
+  <path
+     d="M 72.92,60.2 H 62.33 a 3,3 0 0 0 -3,3 v 10.58 a 1,1 0 0 0 1.71,0.71 L 73.62,61.9 a 1,1 0 0 0 -0.7,-1.7 z"
+     id="path4"
+     inkscape:connector-curvature="0"
+     style="fill:#000000;fill-opacity:1" />
+  <path
+     d="M 72.33,0 H 4 A 4,4 0 0 0 0,4 v 69.2 a 4,4 0 0 0 4,4 h 47.33 a 2,2 0 0 0 2,-2 v -12 a 9,9 0 0 1 9,-9 h 12 a 2,2 0 0 0 2,-2 V 4 a 4,4 0 0 0 -4,-4 z M 43.24,50.51 H 13.91 a 3,3 0 1 1 0,-6 h 29.33 a 3,3 0 0 1 0,6 z m 20,-15 H 13.91 a 3,3 0 1 1 0,-6 h 49.33 a 3,3 0 0 1 0,6 z m 0,-15 H 13.91 a 3,3 0 0 1 0,-6 h 49.33 a 3,3 0 1 1 0,6 z"
+     id="path6"
+     inkscape:connector-curvature="0"
+     style="fill:#000000;fill-opacity:1" />
+</svg>
