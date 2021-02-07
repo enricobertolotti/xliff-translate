@@ -12,7 +12,8 @@
           <FileBrowser />
         </div>
         <div class="d-flex flex-grow-1 fileeditor">
-          <FileEditor />
+          <FileEditor v-if="activeFile" />
+          <NoFile v-else />
         </div>
       </div>
     </div>
@@ -21,8 +22,12 @@
 
 <script>
 import FileBrowser from "@/components/fileBrowser/fileBrowser.vue";
+import NoFile from "@/components/fileEditor/nofile.vue";
 import FileEditor from "@/components/fileEditor/fileEditor.vue";
 import MenuBar from "@/components/menuBar.vue";
+
+
+import { mapGetters } from "vuex";
 
 // import Overlay from "@/components/overlayInfo.vue";
 
@@ -35,7 +40,14 @@ export default {
   components: {
     FileBrowser,
     FileEditor,
+    NoFile,
     MenuBar
+  },
+  computed: {
+    activeFile() {
+      return this.getActiveFile != null;
+    },
+    ...mapGetters(["getActiveFile"])
   },
   methods: {
     openPersonalWebsite() {
@@ -106,7 +118,7 @@ export default {
 
 .fileeditor {
   border-radius: 0 1.8em 1.8em 0;
-  background-color: #f3f6f9;
+  background-color: #f5f8fb;
 }
 
 .dim {
@@ -116,5 +128,4 @@ export default {
 ::-webkit-scrollbar {
   display: none;
 }
-
 </style>

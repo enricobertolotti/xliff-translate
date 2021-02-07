@@ -33,7 +33,7 @@
 
       <div
         class="icon"
-        @click="deleteAllFiles()"
+        @click="showDeleteWarning = true"
         data-toggle="tooltip"
         placement="auto"
         title="Delete all XML files"
@@ -41,6 +41,27 @@
         <svg-icon iconName="trash_outline" />
       </div>
     </div>
+    <b-collapse id="collapse-4" v-model="showDeleteWarning" class="mt-2">
+      <div class="w-100 deleteWarning bg-danger text-white">
+        <div class="d-flex justify-content-center w-100 deleteWarningText">
+          <p class="m-0 mb-1">
+            Are you sure you want <br />
+            to delete all files?
+          </p>
+        </div>
+        <div class="d-flex w-100">
+          <b-button
+            class="btn btn-light d-flex w-100 justify-content-center mr-1"
+            @click="showDeleteWarning = false"
+            >No</b-button
+          >
+          <b-button class=" btn btn-danger d-flex w-100 justify-content-center ml-1"
+            @click="deleteAllFiles()"
+            >Yes</b-button
+          >
+        </div>
+      </div>
+    </b-collapse>
     <div class="d-flex w-100 my-2">
       <divider />
     </div>
@@ -52,6 +73,11 @@ import * as fio from "@/helpers/xliff/fileIO";
 import { mapActions } from "vuex";
 
 export default {
+  data() {
+    return {
+      showDeleteWarning: false
+    };
+  },
   methods: {
     async handleFileUpload() {
       // For each file handle the upload
@@ -62,6 +88,7 @@ export default {
       );
     },
     deleteAllFiles() {
+      this.showDeleteWarning = false;
       this.deleteAllXliffOBJs();
     },
     downloadAllFiles() {
@@ -73,6 +100,18 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.deleteWarning {
+  border-radius: 0.5em;
+  background-color: rgb(206, 0, 0);
+  padding: 0.5em;
+}
+
+.deleteWarningText {
+  text-align: center;
+  padding: 0;
+  margin: 0;
+  color: white;
+}
 
 .icon {
   height: 1.2em;

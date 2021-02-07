@@ -9,7 +9,7 @@ For new feature requests please shoot me an email at 📨hello@enricobertolotti.
 
 
 ### 🗃️ Background
-Sometimes (usually I think) translators are not programmers or engineers, and when faced with an XLIFF file they need to translate they are overwhelmed with all the XML tags and are scared to break something. Alternatives are either expensive, lack-features, or are confusing to use. This web-app aims to solve those problems.
+Sometimes (usually I think) translators are not programmers or engineers, and when faced with an XLIFF filto break something. Alternatives are either expensive, lack-features, or are coe they need to translate they are overwhelmed with all the XML tags and are scared nfusing to use. This web-app aims to solve those problems.
 
 ### 📜 Features
 Here is a list of all current and planned features. For a more detailed overview of future features check out the [trello board](https://trello.com/b/HHcgwnXx/xliff-translate-web-app).

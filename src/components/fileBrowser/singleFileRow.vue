@@ -7,7 +7,8 @@
       {{ file.filename }}
     </p>
     <div class="ml-auto file-right-arrow">
-      <svg-icon iconName="arrow_right" />
+      <svg-icon v-if="file.active" iconName="arrow_right_blue" />
+      <svg-icon v-else iconName="arrow_right" />
     </div>
   </div>
 </template>
