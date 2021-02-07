@@ -22,7 +22,7 @@ export default {
     file: {
       active: Boolean,
       filename: String,
-      selected: Boolean
+      isSelected: Boolean
     }
   },
   computed: {
@@ -47,8 +47,8 @@ export default {
 
 .row {
   border-radius: 0.5em;
-  margin: 0.3em 0;
-  padding: 0.2em 0.6em;
+  margin: 0.2em 0;
+  padding: 0.3em 0.5em;
 
   transition: all 0.3s ease;
 

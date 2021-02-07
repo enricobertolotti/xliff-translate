@@ -55,7 +55,8 @@
             @click="showDeleteWarning = false"
             >No</b-button
           >
-          <b-button class=" btn btn-danger d-flex w-100 justify-content-center ml-1"
+          <b-button
+            class=" btn btn-danger d-flex w-100 justify-content-center ml-1 border-light"
             @click="deleteAllFiles()"
             >Yes</b-button
           >

@@ -30,27 +30,24 @@
             :tabindex="index + 30"
             rows="0"
           ></b-form-textarea>
+          <div>
+            <img
+              id="note-target"
+              v-if="unit.note"
+              class="note enabled"
+              src="@/assets/icons/ui/note_filled_yellow.svg"
+            />
+            <img
+              v-else
+              class="note disabled"
+              src="@/assets/icons/ui/note_filled.svg"
+            />
+          </div>
 
-          <!-- <div class="dropdown-menu">
-              <h6 class="dropdown-header">Dropdown header</h6>
-              <a class="dropdown-item" href="#">Action</a>
-              <a class="dropdown-item" href="#">Another action</a>
-            </div> -->
-          <!-- <v-menu offset-y top left>
-              <template v-slot:activator="{ on, attrs }">
-                <v-btn
-                  color="amber"
-                  icon
-                  :disabled="!unit.note"
-                  :class="{ 'disabled-faded': !unit.note }"
-                  v-bind="attrs"
-                  v-on="on"
-                >
-                  <v-icon>mdi-message-bulleted</v-icon>
-                </v-btn>
-              </template>
-              <Comment :text="unit.note" />
-            </v-menu> -->
+          <b-popover target="note-target" triggers="hover" placement="top">
+            <template #title>Note</template>
+            {{ unit.note }}
+          </b-popover>
         </div>
       </div>
     </div>
@@ -148,5 +145,22 @@ h2 {
 
 .section-id {
   opacity: 0.3;
+}
+
+.note {
+  width: 1.3em;
+  height: 1.3em;
+  margin: 0 0 0 0.5em;
+  object-fit: contain;
+}
+
+.disabled {
+  opacity: 0.1;
+}
+
+.enabled {
+  &:hover {
+    cursor: pointer;
+  }
 }
 </style>

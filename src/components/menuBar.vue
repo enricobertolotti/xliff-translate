@@ -13,7 +13,7 @@
 export default {
   methods: {
     showInfo() {
-      this.$emit("showInfo");
+      // this.$emit("showInfo");
     }
   }
 };

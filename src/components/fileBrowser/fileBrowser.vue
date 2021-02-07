@@ -1,73 +1,24 @@
 <template>
   <div class="d-flex flex-column p-4 file-browser">
-    
     <div class="d-flex w-100">
       <FileBrowserHeader />
     </div>
 
-    <div class="d-flex flex-column w-100">
-      <div
-        class="d-flex w-100 single-file-row"
-        v-for="filename in filenames"
-        :key="filename"
-        @click="setActiveFile(filename)"
-      >
-        <SingleFileRow
-          :file="{
-            active: activeFile == filename,
-            filename: filename,
-            selected: true
-          }"
-        />
-      </div>
+    <div class="d-flex w-100 flex-grow-1">
+      <FileList />
     </div>
   </div>
 </template>
 
 <script>
 // Import components
-import SingleFileRow from "./singleFileRow.vue";
-import FileBrowserHeader from "./fileBrowserHeader";
-
-// Import helpers
-import { mapActions, mapGetters, mapMutations } from "vuex";
-import * as fio from "@/helpers/xliff/fileIO";
+import FileBrowserHeader from "./fileBrowserHeader.vue";
+import FileList from "./fileList.vue";
 
 export default {
-  data() {
-    return {
-      success: false
-    };
-  },
-  computed: {
-    filenames() {
-      return this.getAllxliffIDs;
-    },
-    activeFile() {
-      console.log(this.getActiveFile);
-      return this.getActiveFile ? this.getActiveFile.filename : "";
-    },
-    ...mapGetters(["getAllxliffIDs", "getActiveFile"])
-  },
-  methods: {
-    setActiveFile(filename) {
-      this.setActiveFile(filename);
-    },
-    deleteFile(filename) {
-      this.removeXliffOBJ(filename);
-    },
-    downloadFile(filename) {
-      fio.downloadFile(filename);
-    },
-    downloadAllFiles() {
-      fio.downloadAllFiles();
-    },
-    ...mapMutations(["setActiveFile"]),
-    ...mapActions(["removeXliffOBJ"])
-  },
   components: {
     FileBrowserHeader,
-    SingleFileRow
+    FileList
   }
 };
 </script>
