@@ -17,12 +17,13 @@ Here is a list of all current and planned features. For a more detailed overview
 #### ✅ Current: 
 * Batch upload and parse any XML file with an XLIFF tag in it. *⚠️ Warning: Some special characters are not supported yet and could display partially, incorrectly or not at all! Do not use for anything serious yet!*
 * Stores the documents and translation progress in your browsers local storage so you dont lose them when you close the tab / browser / restart your computer. <sup>1</sup>
-* All edits to the text blocks are automatically saved while you work.
+* All edits are automatically saved while you work.
 * Download single xml file as well as download all current files as a .zip file.
 * Show notes for each section if there are any.
 * Display XML Version as well as source and target language of the XLIFF file.
 
 #### 🚧 Planned:
+* Rename files directly in the file management pane.
 * Add information pop-up to illustrate workflow. 
 * Add possibility to add account and backup documents to firebase for syncing across devices.
 * Automatically name zip file based on its contents.
