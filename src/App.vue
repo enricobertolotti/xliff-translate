@@ -1,32 +1,30 @@
 <template>
-  <v-app id="inspire">
-    <v-overlay z-index="100" :value="showOverlay">
+  <!-- <v-overlay z-index="100" :value="showOverlay">
       <Overlay @exit="showOverlay = false" />
-    </v-overlay>
-      <div class="d-flex main-view flex-grow-1 p-4" :class="{ dim: showOverlay }">
-        <div class="d-flex interface-container">
-          <div class="menu-bar">
-            <MenuBar @showInfo="showOverlay=true" />
-          </div>
-          <div class="d-flex files-container">
-            <div class="filebrowser">
-            <FileBrowser />
-          </div>
-          <div class="d-flex flex-grow-1 fileeditor">
-            <FileEditor />
-          </div>
-          </div>
+    </v-overlay> -->
+  <div class="d-flex main-view flex-grow-1 p-4" :class="{ dim: showOverlay }">
+    <div class="d-flex interface-container">
+      <div class="menu-bar h-100">
+        <MenuBar @showInfo="showOverlay = true" />
+      </div>
+      <div class="d-flex files-container">
+        <div class="filebrowser">
+          <FileBrowser />
+        </div>
+        <div class="d-flex flex-grow-1 fileeditor">
+          <FileEditor />
         </div>
       </div>
-  </v-app>
+    </div>
+  </div>
 </template>
 
 <script>
-import FileBrowser from "@/components/fileBrowser.vue";
-import FileEditor from "@/components/fileEditor.vue";
+import FileBrowser from "@/components/fileBrowser/fileBrowser.vue";
+import FileEditor from "@/components/fileEditor/fileEditor.vue";
 import MenuBar from "@/components/menuBar.vue";
 
-import Overlay from "@/components/overlayInfo.vue";
+// import Overlay from "@/components/overlayInfo.vue";
 
 export default {
   data() {
@@ -37,8 +35,7 @@ export default {
   components: {
     FileBrowser,
     FileEditor,
-    MenuBar,
-    Overlay
+    MenuBar
   },
   methods: {
     openPersonalWebsite() {
@@ -54,9 +51,8 @@ export default {
 };
 </script>
 
-<style lang="scss" scoped>
-
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400&display=swap');
+<style lang="scss">
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@400&display=swap");
 
 :root {
   --darker-blue: #091b23;
@@ -64,8 +60,6 @@ export default {
   --blue: #369ce5;
   --light-blue: #3fa3e9;
   --lighter-blue: #eff7fd;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
 }
 
 .main-view {
@@ -80,10 +74,8 @@ export default {
   width: 100%;
   border-radius: 1.8em;
   box-shadow: 1em 0em 2em rgba($color: #000000, $alpha: 0.2);
-  background: linear-gradient(#369ce5, #3fa3e9);
+  background: linear-gradient(var(--light-blue), var(--blue));
 }
-
-
 
 .menu-bar {
   height: 100%;
@@ -114,7 +106,7 @@ export default {
 
 .fileeditor {
   border-radius: 0 1.8em 1.8em 0;
-  background-color: #F3F6F9;
+  background-color: #f3f6f9;
 }
 
 .dim {
@@ -124,4 +116,5 @@ export default {
 ::-webkit-scrollbar {
   display: none;
 }
+
 </style>

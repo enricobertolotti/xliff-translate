@@ -1,26 +1,22 @@
 <template>
   <div>
     <div class="d-flex align-items-center">
-      <img
-        class="langIcon align-self-center"
-        v-if="sourceIcon"
-        :src="sourceIcon"
-      />
-      <p class="ma-0 align-self-center">{{ languages.source }}</p>
-      <v-icon medium>mdi-chevron-right</v-icon>
-      <img
-        class="langIcon align-self-center"
-        v-if="targetIcon"
-        :src="targetIcon"
-      />
-      <p class="ma-0 align-self-center">{{ languages.target }}</p>
+      <img class="icon" v-if="sourceIcon" :src="sourceIcon" />
+      <p class="m-0 ml-2">{{ languages.source }}</p>
+      <div class="icon ml-2">
+        <svg-icon iconName="arrow_right" />
+      </div>
+      <img class="icon ml-2" v-if="targetIcon" :src="targetIcon" />
+      <p class="m-0 ml-2">{{ languages.target }}</p>
     </div>
   </div>
 </template>
 
 <script>
 import { iconLookup } from "@/helpers/icons/iconMap.ts";
+import svgIcon from "./micro/svgIcon.vue";
 export default {
+  components: { svgIcon },
   props: {
     languages: {
       source: "",
@@ -47,10 +43,9 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.langIcon {
+.icon {
   width: 1.2em;
   height: 1.2em;
-  margin: 0.5em;
   object-fit: contain;
 }
 </style>
