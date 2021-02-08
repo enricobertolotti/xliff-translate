@@ -1,19 +1,29 @@
 <template>
-  <!-- <v-overlay z-index="100" :value="showOverlay">
-      <Overlay @exit="showOverlay = false" />
-    </v-overlay> -->
-  <div class="d-flex main-view flex-grow-1 p-4" :class="{ dim: showOverlay }">
-    <div class="d-flex interface-container">
-      <div class="menu-bar h-100">
-        <MenuBar @showInfo="showOverlay = true" />
+  <div>
+    <!-- Modal Overlay -->
+    <transition name="fade">
+      <div
+        v-if="showOverlay"
+        class="d-flex infoOverlay justify-content-center align-items-center"
+      >
+        <InfoOverlay @exit="showOverlay = false" />
       </div>
-      <div class="d-flex files-container">
-        <div class="filebrowser">
-          <FileBrowser />
+    </transition>
+
+    <!-- Main Screen -->
+    <div class="d-flex main-view flex-grow-1 p-4">
+      <div class="d-flex interface-container">
+        <div class="menu-bar h-100">
+          <MenuBar @showInfo="showOverlay = true" />
         </div>
-        <div class="d-flex flex-grow-1 fileeditor">
-          <FileEditor v-if="activeFile" />
-          <NoFile v-else />
+        <div class="d-flex files-container">
+          <div class="filebrowser">
+            <FileBrowser />
+          </div>
+          <div class="d-flex flex-grow-1 fileeditor">
+            <FileEditor v-if="activeFile" />
+            <NoFile v-else />
+          </div>
         </div>
       </div>
     </div>
@@ -25,7 +35,7 @@ import FileBrowser from "@/components/fileBrowser/fileBrowser.vue";
 import NoFile from "@/components/fileEditor/nofile.vue";
 import FileEditor from "@/components/fileEditor/fileEditor.vue";
 import MenuBar from "@/components/menuBar.vue";
-
+import InfoOverlay from "@/components/infoOverlay/infoOverlay.vue";
 
 import { mapGetters } from "vuex";
 
@@ -36,12 +46,6 @@ export default {
     return {
       showOverlay: false
     };
-  },
-  components: {
-    FileBrowser,
-    FileEditor,
-    NoFile,
-    MenuBar
   },
   computed: {
     activeFile() {
@@ -56,6 +60,13 @@ export default {
         "_blank"
       );
     }
+  },
+  components: {
+    FileBrowser,
+    FileEditor,
+    NoFile,
+    MenuBar,
+    InfoOverlay
   },
   mounted() {
     this.$store.commit("initialiseStore");
@@ -121,11 +132,26 @@ export default {
   background-color: #f5f8fb;
 }
 
-.dim {
-  opacity: 0.05 !important;
+.infoOverlay {
+  position: absolute;
+  z-index: 100;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
 }
+
 
 ::-webkit-scrollbar {
   display: none;
 }
+
+// Animation Keyframes
+.fade-enter-active, .fade-leave-active {
+  transition: opacity .5s;
+}
+.fade-enter, .fade-leave-to /* .fade-leave-active below version 2.1.8 */ {
+  opacity: 0;
+}
+
 </style>

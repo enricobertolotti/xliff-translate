@@ -1,9 +1,9 @@
 <template>
   <v-card class="d-flex w-100 pa-5 ma-3">
-    <img class="logo align-self-center" :src="imageURL" :alt="project.name" />
-    <div class="d-flex flex-column ml-3">
-      <h3 class="ma-0">{{ project.name }}</h3>
-      <p class="grey--text ma-0">{{ project.text }}</p>
+    <img class="logo align-self-center mr-2" :src="imageURL" :alt="project.name" />
+    <div class="d-flex flex-column text-container">
+      <h5 class="title">{{ project.name }}</h5>
+      <p class="description">{{ project.text }}</p>
     </div>
     <img
       class="project-image ml-auto link align-self-center"
@@ -28,7 +28,7 @@ export default {
   computed: {
     imageURL() {
       return this.project
-        ? require(`@/assets/icons/logos/${this.project.iconName}.svg`)
+        ? require(`@/assets/icons/logos/${this.project.iconName}`)
         : "";
     }
   },
@@ -57,12 +57,28 @@ export default {
   object-fit: contain;
 }
 
-.link {
-  opacity: 0.7;
+.text-container {
+  margin: 1em 0.4em;
 }
 
-.link:hover {
-  cursor: pointer;
-  opacity: 0.9;
+.title {
+  margin: 0 5em 0.1em 0;
+  opacity: 0.8;
+}
+
+.description {
+  opacity: 0.5;
+  margin: 0 5em 0 0;
+}
+
+.link {
+  opacity: 0.7;
+
+  transition: all 0.3s ease;
+
+  &:hover {
+    cursor: pointer;
+    opacity: 0.9;
+  }
 }
 </style>

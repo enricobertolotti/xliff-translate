@@ -3,7 +3,7 @@
     <div class="d-flex align-items-center">
       <img class="icon" v-if="sourceIcon" :src="sourceIcon" />
       <p class="m-0 ml-2">{{ languages.source }}</p>
-      <div class="icon ml-2">
+      <div class="ml-2 arrow">
         <svg-icon iconName="arrow_right" />
       </div>
       <img class="icon ml-2" v-if="targetIcon" :src="targetIcon" />
@@ -43,6 +43,14 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+
+.arrow {
+  width: 1em;
+  height: 1em;
+  object-fit: contain;
+  opacity: 0.3;
+}
+
 .icon {
   width: 1.2em;
   height: 1.2em;

@@ -13,7 +13,7 @@
 export default {
   methods: {
     showInfo() {
-      // this.$emit("showInfo");
+      this.$emit("showInfo");
     }
   }
 };
@@ -25,7 +25,9 @@ export default {
 }
 
 .info-icon {
-  padding: 0.5em;
+  width: 50%;
+  height: auto;
+  margin: 0.5em auto;
   opacity: 0.6;
   transition: all 0.3s ease;
   &:hover {
