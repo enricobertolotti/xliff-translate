@@ -3,15 +3,15 @@
     <div class="d-flex w-100 justify-content-between mb-3 ">
       <div>
         <div class="d-flex align-items-center mb-2">
-          <img class="logo mr-3" src="@/assets/icons/logos/icon_colorful.png">
+          <img class="logo mr-3" src="@/assets/icons/logos/icon_colorful.png" />
           <h3 class="mr-5 mb-0">XLIFF Translate</h3>
         </div>
-        
+
         <p class="mr-5 mb-0">
           This project was made possible thanks to the amazing work of the open
-          source communtity! <br /> 
-          Down below are the open source projects that were
-          used in this project 🎉
+          source communtity! <br />
+          Down below are the open source projects that were used in this project
+          🎉
         </p>
       </div>
 
@@ -22,9 +22,7 @@
         alt=""
       />
     </div>
-    <div>
-      
-    </div>
+    <div></div>
     <div class="d-flex flex-column w-100 projects">
       <SingleProject
         v-for="project in overlayProjects"

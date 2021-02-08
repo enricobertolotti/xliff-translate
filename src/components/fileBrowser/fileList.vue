@@ -82,5 +82,4 @@ export default {
 .selectActive {
   color: var(--light-blue) !important;
 }
-
 </style>

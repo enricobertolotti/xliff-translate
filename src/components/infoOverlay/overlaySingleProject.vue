@@ -1,6 +1,10 @@
 <template>
   <v-card class="d-flex w-100 pa-5 ma-3">
-    <img class="logo align-self-center mr-2" :src="imageURL" :alt="project.name" />
+    <img
+      class="logo align-self-center mr-2"
+      :src="imageURL"
+      :alt="project.name"
+    />
     <div class="d-flex flex-column text-container">
       <h5 class="title">{{ project.name }}</h5>
       <p class="description">{{ project.text }}</p>
